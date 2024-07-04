@@ -2,7 +2,7 @@ import { pool } from "../db";
 import { Request, Response } from "express";
 
 export const getUnitMeasurement = async (req: Request, res: Response) => {
-  const [tabla] = await pool.query("Select * from unidadMedida");
+  const [tabla] = await pool.query("select * from unitmeasurement");
   res.send(tabla);
 };
 
@@ -10,7 +10,7 @@ export const createUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { nombre } = req.body;
 
-    await pool.query("insert into unidadMedida values(null,?)", [nombre]);
+    await pool.query("insert into unitmeasurement values(null,?)", [nombre]);
     res.status(200).json({
       message: "Insertado con exito",
     });
@@ -23,7 +23,7 @@ export const updateUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { nombre, id } = req.body;
     const [result]: any = await pool.query(
-      "update unidadMedida set nombre = ? where id = ?",
+      "update unitmeasurement set nombre = ? where unit_id = ?",
       [nombre, id]
     );
     result.affectedRows <= 0
@@ -41,7 +41,7 @@ export const updateUnitMeasurement = async (req: Request, res: Response) => {
 export const deleteUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const [result]: any = await pool.query("delete from unidadMedida where id = ?", [
+    const [result]: any = await pool.query("delete from unitmeasurement where unit_id = ?", [
       id,
     ]);
     return result.affectedRows <= 0
