@@ -1,0 +1,12 @@
+# Archivos generados por npm
+node_modules/
+
+# Archivos de configuración de entorno
+.env
+
+# Archivos de respaldo
+*~
+*.log
+
+# Archivos de caché
+.cache/
