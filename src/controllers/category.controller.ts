@@ -1,12 +1,12 @@
 import { pool } from "../db";
 import { Request, Response } from "express";
 
-export const getCategoria = async (req: Request, res: Response) => {
+export const getCategory = async (req: Request, res: Response) => {
   const [tabla] = await pool.query("Select * from categoria");
   res.send(tabla);
 };
 
-export const createCategoria = async (req: Request, res: Response) => {
+export const createCategory = async (req: Request, res: Response) => {
   try {
     const { nombre } = req.body;
     await pool.query("insert into categoria values(null,?)", [nombre]);
@@ -18,7 +18,7 @@ export const createCategoria = async (req: Request, res: Response) => {
   }
 };
 
-export const updateCategoria = async (req: Request, res: Response) => {
+export const updateCategory = async (req: Request, res: Response) => {
   try {
     const { nombre, id } = req.body;
     const [result]: any = await pool.query(
@@ -37,7 +37,7 @@ export const updateCategoria = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteCategoria = async (req: Request, res: Response) => {
+export const deleteCategory = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const [result]: any = await pool.query("delete from categoria where id = ?", [

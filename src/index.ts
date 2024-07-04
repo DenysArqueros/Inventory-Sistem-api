@@ -2,10 +2,10 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import categoriaRoutes from "@Routes/category.routes";
-import marcaRoutes from "@Routes/category.routes";
-import unidadMedidaRoutes from "@Routes/category.routes";
-import productoRoutes from "@Routes/product.routes";
+import categoryRoutes from "@Routes/category.routes";
+import brandRoutes from "@Routes/brand.routes";
+import unitMeasurementRoutes from "@Routes/unitMeasurement.routes";
+import productRoutes from "@Routes/product.routes";
 import ventaRoutes from "@Routes/sale.routes"
 
 
@@ -17,10 +17,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use(marcaRoutes);
-app.use(categoriaRoutes);
-app.use(productoRoutes);
-app.use(unidadMedidaRoutes);
+app.use(brandRoutes);
+app.use(categoryRoutes);
+app.use(unitMeasurementRoutes);
+app.use(productRoutes);
 app.use(ventaRoutes);
 
 

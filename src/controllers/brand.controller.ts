@@ -1,12 +1,12 @@
 import { pool } from "../db";
 import { Request, Response } from "express";
 
-export const getMarca = async (req: Request, res: Response) => {
+export const getBrand = async (req: Request, res: Response) => {
   const [tabla] = await pool.query("Select * from marca");
   res.send(tabla);
 };
 
-export const createMarca = async (req: Request, res: Response) => {
+export const createBrand = async (req: Request, res: Response) => {
   try {
     const { nombre } = req.body;
     await pool.query("insert into marca values(null,?)", [nombre]);
@@ -18,7 +18,7 @@ export const createMarca = async (req: Request, res: Response) => {
   }
 };
 
-export const updateMarca = async (req: Request, res: Response) => {
+export const updateBrand = async (req: Request, res: Response) => {
   try {
     const { nombre, id } = req.body;
     const [result]: any = await pool.query(
@@ -37,7 +37,7 @@ export const updateMarca = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteMarca = async (req: Request, res: Response) => {
+export const deleteBrand = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const [result]: any = await pool.query("delete from marca where id = ?", [

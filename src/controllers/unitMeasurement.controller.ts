@@ -1,12 +1,12 @@
 import { pool } from "../db";
 import { Request, Response } from "express";
 
-export const getUnidadMedida = async (req: Request, res: Response) => {
+export const getUnitMeasurement = async (req: Request, res: Response) => {
   const [tabla] = await pool.query("Select * from unidadMedida");
   res.send(tabla);
 };
 
-export const createUnidadMedida = async (req: Request, res: Response) => {
+export const createUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { nombre } = req.body;
 
@@ -19,7 +19,7 @@ export const createUnidadMedida = async (req: Request, res: Response) => {
   }
 };
 
-export const updateUnidadMedida = async (req: Request, res: Response) => {
+export const updateUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { nombre, id } = req.body;
     const [result]: any = await pool.query(
@@ -38,7 +38,7 @@ export const updateUnidadMedida = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteUnidadMedida = async (req: Request, res: Response) => {
+export const deleteUnitMeasurement = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const [result]: any = await pool.query("delete from unidadMedida where id = ?", [

@@ -1,7 +1,7 @@
 import { pool } from "../db";
 import { Request, Response } from "express";
 
-export const getProducto = async (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) => {
   const [tabla] = await pool.query("select p.id, p.nombre, p.precio, p.costo, p.stock,m.nombre as marca,um.nombre as unidadMedida," +
     "p.id_unidadmedida , p.id_categoria , p.id_marca, " +
     "c.nombre as categoria from producto p inner join marca m on p.id_marca = m.id inner join UnidadMedida um " +
@@ -9,7 +9,7 @@ export const getProducto = async (req: Request, res: Response) => {
   res.send(tabla);
 };
 
-export const createProducto = async (req: Request, res: Response) => {
+export const createProduct = async (req: Request, res: Response) => {
   try {
     const { nombre, precio, costo, stock, id_marca, id_unidadmedida, id_categoria } = req.body;
     await pool.query(
@@ -24,7 +24,7 @@ export const createProducto = async (req: Request, res: Response) => {
   }
 };
 
-export const updateProducto = async (req: Request, res: Response) => {
+export const updateProduct = async (req: Request, res: Response) => {
   try {
     const { id, nombre, precio, costo, stock, id_marca, id_unidadmedida, id_categoria } = req.body;
     console.log(req.body);
@@ -44,7 +44,7 @@ export const updateProducto = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteProducto = async (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const [result]: any = await pool.query("delete from producto where id = ?", [
