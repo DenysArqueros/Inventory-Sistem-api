@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { createVenta, getVentaById, getVentaByDate } from "@Controllers/venta.controller";
+import { createSale, getSaleById, getSaleByDate } from "@Controllers/sale.controller";
 
 const router = Router();
 
-router.post('/venta', createVenta);
-router.post('/ventaByDate', getVentaByDate);
-router.get('/venta/:idVenta', getVentaById);
+router.post('/venta', createSale);
+router.post('/ventaByDate', getSaleById);
+router.get('/venta/:idVenta', getSaleByDate);
 
 
 export default router;
