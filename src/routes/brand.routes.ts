@@ -6,6 +6,6 @@ const router = Router();
 router.get('/brand', getBrand);
 router.post('/brand', createBrand);
 router.put('/brand', updateBrand);
-router.delete('/brand/:id', deleteBrand);
+router.delete('/brand/:brand_id', deleteBrand);
 
 export default router;

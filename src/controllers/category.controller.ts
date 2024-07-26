@@ -8,8 +8,8 @@ export const getCategory = async (req: Request, res: Response) => {
 
 export const createCategory = async (req: Request, res: Response) => {
   try {
-    const { nombre } = req.body;
-    await pool.query("insert into category values(null,?)", [nombre]);
+    const { descripcion } = req.body;
+    await pool.query("insert into category values(null,?)", [descripcion]);
     res.status(200).json({
       message: "Insertado con exito",
     });
@@ -20,10 +20,10 @@ export const createCategory = async (req: Request, res: Response) => {
 
 export const updateCategory = async (req: Request, res: Response) => {
   try {
-    const { nombre, id } = req.body;
+    const { descripcion, category_id } = req.body;
     const [result]: any = await pool.query(
-      "update category set nombre = ? where category_id = ?",
-      [nombre, id]
+      "update category set descripcion = ? where category_id = ?",
+      [descripcion, category_id]
     );
     result.affectedRows <= 0
       ? res.status(404).json({
@@ -39,9 +39,9 @@ export const updateCategory = async (req: Request, res: Response) => {
 
 export const deleteCategory = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { category_id } = req.params;
     const [result]: any = await pool.query("delete from category where category_id = ?", [
-      id,
+      category_id,
     ]);
     return result.affectedRows <= 0
       ? res.status(404).json({

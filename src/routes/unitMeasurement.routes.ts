@@ -3,10 +3,10 @@ import { getUnitMeasurement, createUnitMeasurement, updateUnitMeasurement, delet
 
 const router = Router();
 
-router.get('/unidadMedida', getUnitMeasurement);
-router.post('/unidadMedida', createUnitMeasurement);
-router.put('/unidadMedida', updateUnitMeasurement);
-router.delete('/unidadMedida/:id', deleteUnitMeasurement);
+router.get('/unitMeasurement', getUnitMeasurement);
+router.post('/unitMeasurement', createUnitMeasurement);
+router.put('/unitMeasurement', updateUnitMeasurement);
+router.delete('/unitMeasurement/:unit_id', deleteUnitMeasurement);
 
 
 export default router;

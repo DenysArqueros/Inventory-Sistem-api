@@ -8,8 +8,8 @@ export const getBrand = async (req: Request, res: Response) => {
 
 export const createBrand = async (req: Request, res: Response) => {
   try {
-    const { nombre } = req.body;
-    await pool.query("insert into brand values(null,?)", [nombre]);
+    const { descripcion } = req.body;
+    await pool.query("insert into brand values(null,?)", [descripcion]);
     res.status(200).json({
       message: "Insertado con exito",
     });
@@ -20,10 +20,10 @@ export const createBrand = async (req: Request, res: Response) => {
 
 export const updateBrand = async (req: Request, res: Response) => {
   try {
-    const { nombre, id } = req.body;
+    const { descripcion, brand_id } = req.body;
     const [result]: any = await pool.query(
       "update brand set descripcion = ? where brand_id = ?",
-      [nombre, id]
+      [descripcion, brand_id]
     );
     result.affectedRows <= 0
       ? res.status(404).json({
@@ -39,9 +39,9 @@ export const updateBrand = async (req: Request, res: Response) => {
 
 export const deleteBrand = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { brand_id } = req.params;
     const [result]: any = await pool.query("delete from brand where brand_id = ?", [
-      id,
+      brand_id,
     ]);
     return result.affectedRows <= 0
       ? res.status(404).json({

@@ -3,9 +3,8 @@ import { createSale, getSaleById, getSaleByDate } from "@Controllers/sale.contro
 
 const router = Router();
 
-router.post('/venta', createSale);
-router.post('/ventaByDate', getSaleById);
-router.get('/venta/:idVenta', getSaleByDate);
-
+router.get('/sale/:sale_id', getSaleById);
+router.post('/sale', createSale);
+router.post('/saleByDate', getSaleByDate);
 
 export default router;
